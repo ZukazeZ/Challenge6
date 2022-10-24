@@ -7,6 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.time.DateTimeException;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -19,13 +20,15 @@ public class ReservationEntity {
     private long reservation_id;
     @Column(name = "price")
     private long price;
-    @Column(name = "seat number")
+    @Column(name = "seat_number")
     private String seat_code;
-    @Column(name = "Time of reservation")
+    @Column(name = "Time_ofreservation")
     private Date time_of_reservation;
-    @Column(name = "Schedule ID")
+    @Column(name = "Schedule_ID")
     private String schedule_id;
     @Column(name = "studio")
     private String studio_id;
+
+
 
 }

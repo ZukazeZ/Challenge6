@@ -31,6 +31,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Getter
@@ -43,6 +44,8 @@ public class FilmEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "nt_Code")
     private long nt_code;
+    @Column(name = "Film_Code")
+    private String film_code;
     @Column(name = "Film_Name")
     private String film_name;
     @Column(name = "Film_Status")
@@ -51,5 +54,8 @@ public class FilmEntity {
     private String film_duration;
     @Column(name = "genre")
     private String genre;
+//    @OneToMany(targetEntity = ReservationEntity.class,cascade =CascadeType.ALL)
+//    @JoinColumn(name = "EntitasBR",referencedColumnName = "id1")
+//    private List<ScheduleEntity> FilmSchedule;
 
 }
