@@ -1,10 +1,13 @@
 package com.Binar.Challenge4.service.impl;
 import com.Binar.Challenge4.entity.Dummy;
-import com.Binar.Challenge4.repository.InvoiceRepository;
+
 import com.Binar.Challenge4.service.InvoiceService;
 import lombok.extern.slf4j.Slf4j;
 import net.sf.jasperreports.engine.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -13,8 +16,8 @@ import java.util.HashMap;
 @Service
 public class InvoiceServiceImpl implements InvoiceService {
 
-    @Autowired
-    private InvoiceRepository invoiceRepository;
+//    @Autowired
+//    private InvoiceRepository invoiceRepository;
 
     @Override
     public Dummy generateFileInvoice(String filename) throws JRException {
@@ -38,6 +41,8 @@ public class InvoiceServiceImpl implements InvoiceService {
         fileDataDB.setFileType("application/pdf");
         return fileDataDB;
     }
+
+
 }
 
 
