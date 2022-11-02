@@ -3,8 +3,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.List;
 
 @Entity
 @Getter
@@ -25,8 +23,4 @@ public class BookingEntity {
     private String booking_status;
     @Column(name = "studio")
     private String studio_id;
-
-//    @OneToMany(targetEntity = ReservationEntity.class,cascade =CascadeType.ALL)
-//    @JoinColumn(name = "EntitasBR",referencedColumnName = "id1")
-//    private List<ReservationEntity> BookingReservasi;
 }

@@ -2,13 +2,8 @@ package com.Binar.Challenge4.entity;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
-import java.time.DateTimeException;
 import java.util.Date;
-import java.util.List;
-
 @Entity
 @Getter
 @Setter

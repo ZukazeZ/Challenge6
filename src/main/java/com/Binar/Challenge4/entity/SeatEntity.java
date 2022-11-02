@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Getter
@@ -18,7 +17,4 @@ public class SeatEntity {
     private String seat_code;
     @Column(name = "Seat_Number")
     private String seat_number;
-//    @OneToMany(targetEntity = ReservationEntity.class,cascade =CascadeType.ALL)
-//    @JoinColumn(name = "EntitasBR",referencedColumnName = "id1")
-//    private List<ReservationEntity> SeatReservasi;
 }

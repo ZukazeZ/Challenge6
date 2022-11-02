@@ -40,8 +40,5 @@ public class UserEntity {
     }
 
 
-//   @OneToMany(targetEntity = BookingEntity.class,cascade = CascadeType.ALL)
-//   @JoinColumn(name="entitasUB",referencedColumnName = "id")
-//   private List<BookingEntity> UserBooking;
 
 }

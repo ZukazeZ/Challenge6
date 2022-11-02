@@ -26,12 +26,9 @@
 //    private String genre;
 //}
 package com.Binar.Challenge4.entity;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import javax.persistence.*;
-import java.util.List;
 
 
 @Getter
@@ -54,8 +51,5 @@ public class FilmEntity {
     private String film_duration;
     @Column(name = "genre")
     private String genre;
-//    @OneToMany(targetEntity = ReservationEntity.class,cascade =CascadeType.ALL)
-//    @JoinColumn(name = "EntitasBR",referencedColumnName = "id1")
-//    private List<ScheduleEntity> FilmSchedule;
 
 }
