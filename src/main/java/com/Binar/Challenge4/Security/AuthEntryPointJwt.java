@@ -1,4 +1,4 @@
-package com.Binar.Challenge4.Security;
+package com.binar.challenge4.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;

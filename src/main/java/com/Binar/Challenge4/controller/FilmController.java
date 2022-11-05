@@ -1,7 +1,8 @@
-package com.Binar.Challenge4.controller;
+package com.binar.challenge4.controller;
 
-import com.Binar.Challenge4.entity.FilmEntity;
-import com.Binar.Challenge4.service.FilmService;
+import com.binar.challenge4.dto.FilmDto;
+import com.binar.challenge4.entity.FilmEntity;
+import com.binar.challenge4.service.FilmService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -30,8 +31,8 @@ public class FilmController {
     )
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public FilmEntity create(@RequestBody FilmEntity film){
-        return filmService.savefilm(film);
+    public FilmEntity create(@RequestBody FilmDto film){
+        return filmService.saveFilm(film);
     }
     @Operation(summary="This is get all information from db")
     @ApiResponses(value ={
@@ -58,8 +59,8 @@ public class FilmController {
     }
     )
     @PutMapping("/update/{id}")
-    public FilmEntity update(@PathVariable Long id, @RequestBody FilmEntity film){
-        return filmService.updaterFilm(id,film);
+    public FilmEntity update(@PathVariable Long id, @RequestBody FilmDto films){
+        return filmService.updaterFilm(id,films);
     }
     @Operation(summary="This is to delete specified film from db")
     @ApiResponses(value ={
@@ -75,7 +76,4 @@ public class FilmController {
     public String delete(@PathVariable Long id){
         return filmService.deleteFilm(id);
     }
-
-
-
 }

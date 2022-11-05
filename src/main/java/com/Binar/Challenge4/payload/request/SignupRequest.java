@@ -1,4 +1,4 @@
-package com.Binar.Challenge4.payload.request;
+package com.binar.challenge4.payload.request;
 
 import java.util.Set;
 

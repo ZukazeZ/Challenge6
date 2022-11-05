@@ -1,4 +1,4 @@
-package com.Binar.Challenge4.entity;
+package com.binar.challenge4.entity;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -12,17 +12,17 @@ public class ReservationEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "nt_id")
-    private long reservation_id;
+    private long reservationId;
     @Column(name = "price")
     private long price;
     @Column(name = "seat_number")
-    private String seat_code;
+    private String seatCode;
     @Column(name = "Time_ofreservation")
-    private Date time_of_reservation;
+    private Date timeOfReservation;
     @Column(name = "Schedule_ID")
-    private String schedule_id;
+    private String scheduleId;
     @Column(name = "studio")
-    private String studio_id;
+    private String studioId;
 
 
 

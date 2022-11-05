@@ -1,7 +1,7 @@
-package com.Binar.Challenge4.Security.impl;
+package com.binar.challenge4.security.impl;
 
-import com.Binar.Challenge4.entity.UserEntity;
-import com.Binar.Challenge4.repository.UserRepository;
+import com.binar.challenge4.entity.UserEntity;
+import com.binar.challenge4.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

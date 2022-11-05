@@ -1,6 +1,6 @@
-package com.Binar.Challenge4.service;
+package com.binar.challenge4.service;
 
-import com.Binar.Challenge4.entity.Dummy;
+import com.binar.challenge4.entity.Dummy;
 import com.lowagie.text.DocumentException;
 import net.sf.jasperreports.engine.JRException;
 import java.io.FileNotFoundException;

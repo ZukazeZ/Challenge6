@@ -1,23 +1,22 @@
-package com.Binar.Challenge4.controller;
+package com.binar.challenge4.controller;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-
 import javax.validation.Valid;
 
-import com.Binar.Challenge4.Security.JWTUtils;
-import com.Binar.Challenge4.Security.impl.UserDetailsImpl;
-import com.Binar.Challenge4.entity.ERoles;
-import com.Binar.Challenge4.entity.RoleEntity;
-import com.Binar.Challenge4.entity.UserEntity;
-import com.Binar.Challenge4.payload.request.LoginRequest;
-import com.Binar.Challenge4.payload.request.SignupRequest;
-import com.Binar.Challenge4.payload.response.JwtResponse;
-import com.Binar.Challenge4.payload.response.MessageResponse;
-import com.Binar.Challenge4.repository.RoleRepository;
-import com.Binar.Challenge4.repository.UserRepository;
+import com.binar.challenge4.entity.ERoles;
+import com.binar.challenge4.entity.RoleEntity;
+import com.binar.challenge4.entity.UserEntity;
+import com.binar.challenge4.payload.request.LoginRequest;
+import com.binar.challenge4.payload.request.SignupRequest;
+import com.binar.challenge4.payload.response.JwtResponse;
+import com.binar.challenge4.payload.response.MessageResponse;
+import com.binar.challenge4.repository.RoleRepository;
+import com.binar.challenge4.repository.UserRepository;
+import com.binar.challenge4.security.JWTUtils;
+import com.binar.challenge4.security.impl.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -25,7 +24,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -55,7 +53,7 @@ public class AuthController {
     JWTUtils jwtUtils;
 
     @PostMapping("/signin")
-    public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<Object> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
@@ -76,21 +74,22 @@ public class AuthController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
-        if (userRepository.existsByUsername(signUpRequest.getUsername())) {
+    public ResponseEntity<Object> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
+
+        if (userRepository.existsByUsername(signUpRequest.getUsername()).equals(true)) {
             return ResponseEntity
                     .badRequest()
                     .body(new MessageResponse("Error: Username is already taken!"));
         }
 
-        if (userRepository.existsByEmail(signUpRequest.getEmail())) {
+        if (userRepository.existsByEmail(signUpRequest.getEmail()).equals(true)) {
             return ResponseEntity
                     .badRequest()
                     .body(new MessageResponse("Error: Email is already in use!"));
         }
 
         // Create new account
-        UserEntity user = new UserEntity ();
+        UserEntity user = new UserEntity();
         user.setUsername(signUpRequest.getUsername());
         user.setEmail(signUpRequest.getEmail());
         user.setPassword(bCryptPasswordEncoder.encode(signUpRequest.getPassword()));
@@ -113,7 +112,6 @@ public class AuthController {
                 }
             });
         }
-
         user.setRoles(roles);
         userRepository.save(user);
 

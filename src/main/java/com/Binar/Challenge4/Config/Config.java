@@ -1,4 +1,4 @@
-package com.Binar.Challenge4.Config;
+package com.binar.challenge4.config;
 
 
 import org.springframework.context.annotation.Bean;

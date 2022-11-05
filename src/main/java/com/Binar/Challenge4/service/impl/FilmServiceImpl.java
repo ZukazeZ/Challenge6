@@ -1,8 +1,14 @@
-package com.Binar.Challenge4.service.impl;
+package com.binar.challenge4.service.impl;
 
-import com.Binar.Challenge4.entity.FilmEntity;
-import com.Binar.Challenge4.repository.FilmRepository;
-import com.Binar.Challenge4.service.FilmService;
+import com.binar.challenge4.dto.FilmDto;
+import com.binar.challenge4.entity.FilmEntity;
+import com.binar.challenge4.repository.FilmDtoRepository;
+import com.binar.challenge4.repository.FilmRepository;
+import com.binar.challenge4.security.AuthEntryPointJwt;
+import com.binar.challenge4.service.FilmService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +20,7 @@ public class FilmServiceImpl implements FilmService {
     private final FilmRepository filmRepository;
 
 
+
     public FilmServiceImpl(FilmRepository filmRepository) {
         this.filmRepository = filmRepository;
     }
@@ -23,24 +30,33 @@ public class FilmServiceImpl implements FilmService {
     }
 
     @Override
-    public Optional<FilmEntity> findById(Long user_id) {
-        return filmRepository.findById(user_id);
+    public Optional<FilmEntity> findById(Long id) {
+        return filmRepository.findById(id);
     }
 
     @Override
-    public FilmEntity savefilm(FilmEntity filmEntity) {
-        return filmRepository.save(filmEntity);
+    public FilmEntity saveFilm(FilmDto filmDto) {
+        return filmRepository.save(filmDto);
     }
 
+
     @Override
-    public FilmEntity updaterFilm(Long id, FilmEntity filmEntity) {
-        FilmEntity FilmEntityFINDID=filmRepository.findById(id).get();
-        FilmEntityFINDID.setFilm_name(filmEntity.getFilm_name());
-        FilmEntityFINDID.setFilm_status(filmEntity.getFilm_status());
-        FilmEntityFINDID.setFilm_duration(filmEntity.getFilm_duration());
-        FilmEntityFINDID.setGenre(filmEntity.getGenre());
-        return filmRepository.save(FilmEntityFINDID);
-    }
+    public FilmEntity updaterFilm(Long id, FilmDto filmEntity) {
+//        if(filmRepository.existsById(id)) {
+            FilmEntity findId = filmRepository.findById(id).get();
+
+            findId.setFilmName(filmEntity.getFilmName());
+            findId.setFilmStatus(filmEntity.getFilmStatus());
+            findId.setFilmDuration(filmEntity.getFilmDuration());
+            findId.setGenre(filmEntity.getGenre());
+            return filmRepository.save(findId);
+        }
+//        else {
+//            logger.error("No such film exist here");
+//            return null;
+//        }
+
+
 
     public String deleteFilm(Long id) {
         filmRepository.deleteById(id);

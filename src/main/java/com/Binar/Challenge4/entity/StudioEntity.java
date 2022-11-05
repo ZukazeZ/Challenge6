@@ -1,4 +1,4 @@
-package com.Binar.Challenge4.entity;
+package com.binar.challenge4.entity;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -13,8 +13,8 @@ public class StudioEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Studio_ID")
-    private long studio_id;
+    private long studioId;
     @Column(name = "Studio_Name")
-    private String studio_name;
+    private String studioName;
 
 }

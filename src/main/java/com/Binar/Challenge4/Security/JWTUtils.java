@@ -1,6 +1,6 @@
-package com.Binar.Challenge4.Security;
+package com.binar.challenge4.security;
 
-import com.Binar.Challenge4.Security.impl.UserDetailsImpl;
+import com.binar.challenge4.security.impl.UserDetailsImpl;
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,10 +1,10 @@
-package com.Binar.Challenge4.controller;
+package com.binar.challenge4.controller;
 
-
-import com.Binar.Challenge4.entity.RoleEntity;
-import com.Binar.Challenge4.entity.UserEntity;
-import com.Binar.Challenge4.repository.UserRepository;
-import com.Binar.Challenge4.service.UserService;
+import com.binar.challenge4.dto.UserDto;
+import com.binar.challenge4.entity.RoleEntity;
+import com.binar.challenge4.entity.UserEntity;
+import com.binar.challenge4.repository.UserRepository;
+import com.binar.challenge4.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -51,7 +51,7 @@ public class UserController {
     }
 
     @PostMapping("/role/addToUser")
-    public ResponseEntity<?> addRoletoUser(@RequestBody RoleToUserForm form){
+    public ResponseEntity<String> addRoletoUser(@RequestBody RoleToUserForm form){
         userService.addRoletoUser(form.getUsername(), form.getRoleName());
         return ResponseEntity.ok().build();
     }
@@ -68,7 +68,7 @@ public class UserController {
     )
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public UserEntity create(@RequestBody UserEntity user){
+    public UserEntity create(@RequestBody UserDto user){
         return userService.saveUser(user);
     }
 
@@ -98,7 +98,7 @@ public class UserController {
     }
     )
     @PutMapping("/update/{id}")
-    public UserEntity update(@PathVariable Long id, @RequestBody UserEntity user){
+    public UserEntity update(@PathVariable Long id, @RequestBody UserDto user){
         return userService.updaterUser(id,user);
     }
     @Operation(summary="This is to delete specified user from db")
@@ -120,19 +120,5 @@ public class UserController {
         private String username;
         private String roleName;
     }
-//    @Operation(summary="This is to file a report from db")
-//    @ApiResponses(value ={
-//            @ApiResponse(responseCode = "200",
-//                    description = "file has been made from DB",
-//                    content = {@Content(mediaType="application/json")}),
-//            @ApiResponse(responseCode = "404",
-//                    description = "Not Available",
-//                    content = @Content)
-//    }
-//    )
-
-//    public static void main(String[] args) {
-//        SpringApplication.run(SpringBootJasperReportApplication.class, args);
-//    }
 
 }

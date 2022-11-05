@@ -1,13 +1,10 @@
-package com.Binar.Challenge4.service.impl;
-import com.Binar.Challenge4.entity.Dummy;
+package com.binar.challenge4.service.impl;
 
-import com.Binar.Challenge4.service.InvoiceService;
+import com.binar.challenge4.entity.Dummy;
+import com.binar.challenge4.service.InvoiceService;
 import lombok.extern.slf4j.Slf4j;
 import net.sf.jasperreports.engine.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
 import org.springframework.stereotype.Service;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -15,9 +12,6 @@ import java.util.HashMap;
 @Slf4j
 @Service
 public class InvoiceServiceImpl implements InvoiceService {
-
-//    @Autowired
-//    private InvoiceRepository invoiceRepository;
 
     @Override
     public Dummy generateFileInvoice(String filename) throws JRException {

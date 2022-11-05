@@ -1,4 +1,4 @@
-package com.Binar.Challenge4.controller;
+package com.binar.challenge4.controller;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;

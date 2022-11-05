@@ -1,10 +1,9 @@
-package com.Binar.Challenge4.entity;
+package com.binar.challenge4.entity;
 
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.*;
-
 import static javax.persistence.FetchType.EAGER;
 
 
@@ -14,12 +13,10 @@ import static javax.persistence.FetchType.EAGER;
 @Table(name= "nt_Username")
 
 public class UserEntity {
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "nt_id")
-    private long user_id;
+    private long userId;
     @Column(name = "name")
     private String username;
     @Column(name = "password")
@@ -38,6 +35,7 @@ public class UserEntity {
         this.password = password;
         this.age = age;
     }
+
 
 
 

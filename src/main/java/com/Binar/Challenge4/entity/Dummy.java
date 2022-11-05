@@ -1,4 +1,4 @@
-package com.Binar.Challenge4.entity;
+package com.binar.challenge4.entity;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,22 +1,14 @@
-package com.Binar.Challenge4.service.impl;
+package com.binar.challenge4.service.impl;
 
-import com.Binar.Challenge4.entity.RoleEntity;
-import com.Binar.Challenge4.entity.UserEntity;
-import com.Binar.Challenge4.repository.RoleRepository;
-import com.Binar.Challenge4.repository.UserRepository;
-import com.Binar.Challenge4.service.UserService;
+import com.binar.challenge4.entity.RoleEntity;
+import com.binar.challenge4.entity.UserEntity;
+import com.binar.challenge4.repository.RoleRepository;
+import com.binar.challenge4.repository.UserRepository;
+import com.binar.challenge4.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,8 +26,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<UserEntity> findById(Long user_id) {
-        return userRepository.findById(user_id);
+    public Optional<UserEntity> findById(Long id) {
+        return userRepository.findById(id);
     }
 
     @Override
@@ -46,14 +38,17 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserEntity updaterUser(Long id,UserEntity userEntity) {
-        log.info("Updating user information to the database");
-        UserEntity UserEntityFINDID=userRepository.findById(id).get();
-        UserEntityFINDID.setUsername(userEntity.getUsername());
-        UserEntityFINDID.setPassword(userEntity.getPassword());
-        UserEntityFINDID.setEmail(userEntity.getEmail());
-        UserEntityFINDID.setAge(userEntity.getAge());
-        return userRepository.save(UserEntityFINDID);
-    }
+//        Optional<String> value = userRepository.findById(id).ifPresent(null) {
+//            if (value.isPresent()) {
+//                log.info("Updating user information to the database");
+
+                UserEntity findId = userRepository.findById(id).get();
+                findId.setUsername(userEntity.getUsername());
+                findId.setPassword(userEntity.getPassword());
+                findId.setEmail(userEntity.getEmail());
+                findId.setAge(userEntity.getAge());
+                return userRepository.save(findId);
+            }
 
     @Override
     public String deleteUser(Long id) {

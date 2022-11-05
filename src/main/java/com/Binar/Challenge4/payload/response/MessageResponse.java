@@ -1,12 +1,10 @@
-package com.Binar.Challenge4.payload.response;
+package com.binar.challenge4.payload.response;
 
 public class MessageResponse {
     private String message;
-
     public MessageResponse(String message) {
         this.message = message;
     }
-
     public String getMessage() {
         return message;
     }

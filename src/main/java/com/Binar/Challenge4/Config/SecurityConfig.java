@@ -1,7 +1,6 @@
-package com.Binar.Challenge4.Config;
-
-import com.Binar.Challenge4.Security.AuthEntryPointJwt;
-import com.Binar.Challenge4.Security.AuthTokenFilter;
+package com.binar.challenge4.config;
+import com.binar.challenge4.security.AuthEntryPointJwt;
+import com.binar.challenge4.security.AuthTokenFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -16,22 +15,15 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
-
-
 @Configuration @EnableWebSecurity @RequiredArgsConstructor
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig  extends WebSecurityConfigurerAdapter{
     @Autowired
     private UserDetailsService userDetailsService;
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
-
     private AuthEntryPointJwt unauthorizedHandler;
-
     @Override
     protected void configure (AuthenticationManagerBuilder auth)throws Exception{
         auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
@@ -54,14 +46,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.cors().and().csrf().disable()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-                .authorizeRequests().antMatchers("/api/auth/**").permitAll()
-
-
+                .authorizeRequests().antMatchers("/api/auth/signup","/api/auth/signin","/film/getall","/api/auth/**").permitAll()
+                .antMatchers("/film/create","/film/update","/film/delete").hasRole("ADMIN")
                 .antMatchers("/swagger-ui/**").permitAll()
-
-                .antMatchers("/api/auth/signin","/film/create","/film/getall","/film/update","/film/delete").hasRole("ADMIN")
-                .antMatchers("/api/auth/signin","/film/getall").hasRole("USER")
-
                 .anyRequest().authenticated();
 
 
@@ -79,7 +66,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-
         authProvider.setUserDetailsService(userDetailsService);
         authProvider.setPasswordEncoder(bCryptPasswordEncoder);
 

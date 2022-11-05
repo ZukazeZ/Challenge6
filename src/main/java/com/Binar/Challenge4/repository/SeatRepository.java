@@ -1,6 +1,6 @@
-package com.Binar.Challenge4.repository;
+package com.binar.challenge4.repository;
 
-import com.Binar.Challenge4.entity.SeatEntity;
+import com.binar.challenge4.entity.SeatEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
