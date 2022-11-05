@@ -9,10 +9,10 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @SpringBootApplication
 @OpenAPIDefinition
-public class binarAcademyApplication {
+public class BinarAcademyApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(binarAcademyApplication.class, args);
+		SpringApplication.run(BinarAcademyApplication.class, args);
 	}
 
 }
