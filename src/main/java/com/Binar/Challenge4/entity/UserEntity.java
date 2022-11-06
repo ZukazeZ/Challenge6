@@ -29,14 +29,5 @@ public class UserEntity {
     @ManyToMany(fetch = EAGER)
     private Collection<RoleEntity> roles = new ArrayList<>();
 
-    public UserEntity(String username, String email, String password,Long age) {
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.age = age;
-    }
-
-
-
 
 }

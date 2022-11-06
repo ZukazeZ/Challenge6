@@ -47,7 +47,10 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter{
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests().antMatchers("/api/auth/signup","/api/auth/signin","/film/getall","/api/auth/**").permitAll()
-                .antMatchers("/film/create","/film/update","/film/delete").hasRole("ADMIN")
+                .antMatchers("/film/create","/film/update","/film/delete",
+                        "/user/users","user/getall", "user/delete/{id}"
+                        ,"/role/addToUser").hasRole("ADMIN")
+                .antMatchers("user/update{id}").hasRole("USER")
                 .antMatchers("/swagger-ui/**").permitAll()
                 .anyRequest().authenticated();
 

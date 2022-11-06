@@ -9,6 +9,7 @@ class binarAcademyApplicationTests {
 
 	@Test
 	void contextLoads() {
+
 	}
 
 

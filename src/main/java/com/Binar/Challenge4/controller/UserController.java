@@ -72,8 +72,6 @@ public class UserController {
         return userService.saveUser(user);
     }
 
-
-
     @Operation(summary="This is to get all user into db")
     @ApiResponses(value ={
             @ApiResponse(responseCode = "200",
@@ -98,8 +96,8 @@ public class UserController {
     }
     )
     @PutMapping("/update/{id}")
-    public UserEntity update(@PathVariable Long id, @RequestBody UserDto user){
-        return userService.updaterUser(id,user);
+    public UserEntity update(@PathVariable Long id, @RequestBody UserDto users){
+        return userService.updaterUser(id,users);
     }
     @Operation(summary="This is to delete specified user from db")
     @ApiResponses(value ={
