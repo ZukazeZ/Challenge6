@@ -17,6 +17,10 @@ import com.binar.challenge4.repository.RoleRepository;
 import com.binar.challenge4.repository.UserRepository;
 import com.binar.challenge4.security.JWTUtils;
 import com.binar.challenge4.security.impl.UserDetailsImpl;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -52,6 +56,15 @@ public class AuthController {
     @Autowired
     JWTUtils jwtUtils;
 
+    @Operation(summary="This is for a login to get the request code")
+    @ApiResponses(value ={
+            @ApiResponse(responseCode = "200",
+                    description = "User is in the database",
+                    content = {@Content(mediaType="application/json")}),
+            @ApiResponse(responseCode = "404",
+                    description = "User Not available in database",
+                    content = @Content)
+    })
     @PostMapping("/signin")
     public ResponseEntity<Object> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
@@ -72,7 +85,15 @@ public class AuthController {
                 userDetails.getEmail(),
                 roles));
     }
-
+    @Operation(summary="This is to put new data information into DB")
+    @ApiResponses(value ={
+            @ApiResponse(responseCode = "200",
+                    description = "New data has been inputed into database with respective role",
+                    content = {@Content(mediaType="application/json")}),
+            @ApiResponse(responseCode = "404",
+                    description = "Not Available",
+                    content = @Content)
+    })
     @PostMapping("/signup")
     public ResponseEntity<Object> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
 

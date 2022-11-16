@@ -40,6 +40,7 @@ public class UserController {
                     content = @Content)
     }
     )
+
     @GetMapping("/users")
     public ResponseEntity<List<UserEntity>> getUser(){
         return ResponseEntity.ok().body(userService.findalluser());
